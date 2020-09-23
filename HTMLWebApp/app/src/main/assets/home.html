@@ -1,0 +1,64 @@
+<link href="./bootstrap/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="./fade.css" rel="stylesheet">
+<script src="./bootstrap/assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./jquery-3.5.1.slim.min.js"></script>
+<script src="./bootstrap/assets/dist/js/bootstrap.bundle.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<script type='text/javascript'>
+    function showToast(showtext) {
+        if (JSInterface)
+            JSInterface.showToast(showtext);
+    }
+
+    function writeFile(data, filename) {
+        if (JSInterface)
+            JSInterface.writeFile(data, filename);
+
+    }
+    function readFile(filename) {
+        if (JSInterface)
+            return JSInterface.readFile(filename);
+    }
+
+    function listFile() {
+        if (JSInterface)
+            return JSInterface.listFile();
+    }
+
+    function delFile(filename) {
+        if (JSInterface)
+            return JSInterface.delFile(filename);
+    }
+
+    function card(text, fileid) {
+        html = "<div class=\"card mb-3\"><div class=\"card-body\"><div class=\"card-text\">";
+        html += "<div style='text-align:right;'><img src='./ionicons/svg/close-circle-outline.svg' onclick='delFile(\"" + fileid + "\");location.reload();' style='width: 32px;'></div>"
+        html += fileid+"<br>";
+        html += text;
+        html += "</div></div></div>";
+
+        document.write(html);
+    }
+
+</script>
+
+<body style="background-color: #F0F2F5;">
+    <div class="container">
+        <br>
+        <h1>Home</h1>
+
+        <script>
+            if ( listFile() != "" ) {
+                listFile().split("/").forEach(element => {
+                    card(readFile(element), element);
+                });
+            }
+
+        </script>
+        <br><br><br>
+
+    </div>
+
+
+</body>

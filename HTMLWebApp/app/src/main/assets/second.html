@@ -1,0 +1,41 @@
+<link href="./bootstrap/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="./fade.css" rel="stylesheet">
+<script src="./bootstrap/assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./jquery-3.5.1.slim.min.js"></script>
+<script src="./bootstrap/assets/dist/js/bootstrap.bundle.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<script>
+
+  function writeFile(data, filename) {
+    if (JSInterface)
+      JSInterface.writeFile(data, filename);
+
+  }
+
+  function savenote() {
+
+    writeFile(document.getElementById("note").value , document.getElementById("filename").value );
+    window.location.replace('home.html');
+  }
+</script>
+
+<body style="background-color: #F0F2F5;">
+  <div class="container">
+    <br>
+    <h1>New Note</h1>
+    <div class="card">
+      <div class="card-body">
+        Title: <input id="filename"> <br><br>
+        <textarea style="height: 200px;width: 100%;" id="note"></textarea>
+        <br>
+        <br>
+        <button class="btn btn-primary" onclick="savenote()">Add</button>
+
+      </div>
+    </div>
+    <br><br>
+  </div>
+
+
+</body>
